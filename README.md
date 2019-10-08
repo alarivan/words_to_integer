@@ -9,7 +9,7 @@ To use WordsToInteger in your projects, add `words_to_integer` to your list of d
 ```elixir
 def deps do
   [
-    {:words_to_integer, "~> 0.1.0"}
+    {:words_to_integer, "~> 0.1.1"}
   ]
 end
 ```
@@ -23,8 +23,15 @@ Then run `mix deps.get` to install it.
 ## Example
 
 ```elixir
-WordsToInteger.convert("one hundred and sixty eight")
+      iex> WordsToInteger.convert("one million eight hundred sixty-nine thousand four hundred and twenty")
+      {:ok, 1_869_420}
 
+      iex> WordsToInteger.convert("invalid string")
+      {:error, :invalid_input}
 
-WordsToInteger.convert("one million eight hundred sixty-nine thousand four hundred and twenty")
+      iex> WordsToInteger.convert!("two hundred forty-six")
+      246
+
+      iex> WordsToInteger.convert!("invalid string")
+      ** (ArgumentError) Invalid input
 ```
