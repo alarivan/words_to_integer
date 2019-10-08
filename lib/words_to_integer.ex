@@ -43,6 +43,8 @@ defmodule WordsToInteger do
   @doc """
   Converts a number spelled out as English words to an integer.
 
+  Returns `{:ok, integer}` if string is valid, otherwise `{:error, :invalid_input}`.
+
   ## Examples
 
       iex> WordsToInteger.convert("one hundred and sixty eight")
@@ -59,6 +61,28 @@ defmodule WordsToInteger do
     case validate(words) do
       true -> {:ok, Enum.reduce(words, 0, fn word, acc -> parse_word(word, acc) end)}
       false -> {:error, :invalid_input}
+    end
+  end
+
+  @doc """
+  Converts a number spelled out as English words to an integer.
+
+  Raises `ArgumentError` if the input string is invalid.
+
+  ## Examples
+
+      iex> WordsToInteger.convert!("one hundred and sixty eight")
+      168
+
+      iex> WordsToInteger.convert!("invalid string")
+      ** (ArgumentError) Invalid input
+
+  """
+  @spec convert!(binary) :: integer
+  def convert!(str) do
+    case convert(str) do
+      {:ok, integer} -> integer
+      {:error, :invalid_input} -> raise ArgumentError, message: "Invalid input"
     end
   end
 

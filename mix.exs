@@ -4,7 +4,7 @@ defmodule WordsToInteger.MixProject do
   def project do
     [
       app: :words_to_integer,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       name: "WordsToInteger",
