@@ -1,17 +1,20 @@
 defmodule WordsToInteger.MixProject do
   use Mix.Project
 
+  @version "0.1.1"
+  @github "https://github.com/alarivan/words_to_integer"
+
   def project do
     [
       app: :words_to_integer,
-      version: "0.1.1",
+      version: @version,
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       name: "WordsToInteger",
       description: description(),
       package: package(),
-      source_url: "https://github.com/alarivan/words_to_integer",
-      deps: deps()
+      deps: deps(),
+      docs: docs()
     ]
   end
 
@@ -35,7 +38,15 @@ defmodule WordsToInteger.MixProject do
     [
       maintainers: ["alarivan"],
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/alarivan/words_to_integer"}
+      links: %{"GitHub" => @github}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "WordsToInteger",
+      source_ref: "v#{@version}",
+      source_url: @github
     ]
   end
 end
